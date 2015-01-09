@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    
+    <bean id="template" abstract="true">
+		<property name="message1" value="Deafualt message 1"/>
+		<property name="message2" value="Deafualt message 2"/>
+	</bean>
+   <bean id="helloWorld" class="com.mysamples.springsamples.postprocessors.HelloWorld"
+   parent="template">
+       <property name="message1" value="Hello World! Welcome to world of Spring 4.0"/>
+   </bean>
+
+   <bean id="singletonCheck" class="com.mysamples.springsamples.postprocessors.HelloWorld" 
+   scope="singleton">
+   </bean>
+   
+    <bean id="prototypeCheck" class="com.mysamples.springsamples.postprocessors.HelloWorld" 
+   scope="prototype">
+   <property name="message1" value="Default prototype message"></property>
+   </bean>
+   <!-- bean class="com.mysamples.springsamples.postprocessors.HelloWorldProcessorTwo"/-->
+   <!-- bean class="com.mysamples.springsamples.postprocessors.HelloWorldProcessorOne" /-->
+
+	<bean id="textEditor" class="com.mysamples.springsamples.codewithinterface.TextEditor">
+	<property name="spellChecker" ref="spellChecker"/>
+	</bean>
+	<bean id="spellChecker" class="com.mysamples.springsamples.codewithinterface.EnglishSpellChecker"></bean>
+	<bean id="collectionTest" class="com.mysamples.springsamples.collection.CollectionTest">
+	<property name="addressList">
+		<list>
+		<value>UK</value>
+		<value>US</value>
+		<value>IND</value>
+		<value>SL</value>
+		<value>UK</value>
+		</list>
+	</property>
+	<property name="addressSet">
+		<set>
+		<value>UK</value>
+		<value>US</value>
+		<value>IND</value>
+		<value>SL</value>
+		<value>UK</value>
+		</set>
+	</property>
+	<property name="addressMap">
+		<map>
+		<entry key="1" value="UK"/>
+		<entry key="2" value="US"/>
+		<entry key="3" value="IND"/>
+		<entry key="4" value="SL"/>
+		<entry key="5" value="UK"/>
+		</map>
+	</property>
+	<property name="addressProperties">
+		<props>
+		<prop key="1">UK</prop>
+		<prop key="2">US</prop>
+		<prop key="3">IND</prop>
+		<prop key="4">SL</prop>
+		<prop key="5">UK</prop>
+		</props>
+	</property>
+	</bean>
+</beans>
